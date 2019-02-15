@@ -32,8 +32,8 @@ public class PhoneBookTest {
         count++;
 
         //Then
-        int listSize = newPhoneBook.tmap.size();
-        Assert.assertEquals(count, listSize);
+        int treeSize = newPhoneBook.tmap.size();
+        Assert.assertEquals(count, treeSize);
     }
     @Test
     public void removeTest(){
@@ -97,30 +97,40 @@ public class PhoneBookTest {
     public void displayTest(){
         //Given
         String name = "Sravani";
+        String name1 = "Vedam";
         List<String> phoneNumbers = new ArrayList<String>();
+        List<String> phoneNumbers1 = new ArrayList<String>();
 
         phoneNumbers.add("232-454-6778");
         phoneNumbers.add("565-545-3434");
+        phoneNumbers1.add("454-676-2323");
+        phoneNumbers1.add("565-898-6767");
         PhoneBook newPhoneBook = new PhoneBook();
         newPhoneBook.add(name, phoneNumbers);
+        newPhoneBook.add(name1, phoneNumbers1);
 
         //When
         newPhoneBook.display();
 
         //Then
-        Assert.assertEquals("Sravani [232-454-6778, 565-545-3434]", outContent.toString().trim());
+        Assert.assertEquals("Sravani [232-454-6778, 565-545-3434]\nVedam [454-676-2323, 565-898-6767]", outContent.toString().trim());
     }
     @Test
     public void removeRecordTest(){
         //Given
         String name = "Sravani";
+        String name1 = "Vedam";
         List<String> phoneNumbers = new ArrayList<String>();
+        List<String> phoneNumbers1 = new ArrayList<String>();
 
         phoneNumbers.add("232-454-6778");
         phoneNumbers.add("565-545-3434");
+        phoneNumbers1.add("454-676-2323");
+        phoneNumbers1.add("565-898-6767");
         PhoneBook newPhoneBook = new PhoneBook();
         newPhoneBook.add(name, phoneNumbers);
-        int count = 1;
+        newPhoneBook.add(name1, phoneNumbers1);
+        int count = 2;
 
         //When
         newPhoneBook.removeRecord(name);
